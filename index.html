@@ -13,7 +13,6 @@
             line-height: 1.7;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
-        /* 半透明遮罩，让文字更清晰 */
         body::before {
             content: '';
             position: fixed;
@@ -25,7 +24,6 @@
             z-index: -1;
         }
         
-        /* 顶部悬浮导航 */
         .top-nav {
             position: sticky;
             top: 0;
@@ -49,13 +47,13 @@
             color: #1a365d;
             letter-spacing: 0.5px;
         }
-        .nav-subtitle {
+                .nav-subtitle {
             font-size: 0.95rem;
             color: #4a5568;
             font-weight: 500;
             margin-top: 2px;
         }
-        .nav-links { display: flex; gap: 28px; }
+        .nav-links { display: flex; gap: 28px; flex-wrap: wrap; }
         .nav-link {
             text-decoration: none;
             color: #4a5568;
@@ -65,7 +63,6 @@
         }
         .nav-link:hover { color: #3182ce; }
 
-        /* 语言切换按钮 */
         .lang-switch { display: flex; gap: 10px; }
         .lang-btn {
             padding: 7px 14px;
@@ -87,14 +84,12 @@
             color: white;
         }
         
-        /* 主内容区 */
         .main-content {
             max-width: 920px;
             margin: 35px auto;
             padding: 0 24px;
         }
         
-        /* 圆角卡片样式 */
         .card {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(8px);
@@ -131,15 +126,18 @@
             font-size: 0.95rem;
             font-weight: 500;
         }
-        .course-list {
+        .course-list, .experience-list {
             margin-left: 22px;
             margin-top: 12px;
             color: #4a5568;
             font-size: 1rem;
         }
-        .course-list li { margin-bottom: 8px; }
+        .course-list li, .experience-list li { margin-bottom: 8px; }
+        .experience-item { margin-bottom: 18px; }
+        .experience-period { font-weight: 600; color: #2d3748; }
+        .experience-place { color: #4a5568; margin-left: 8px; }
+        .experience-position { float: right; color: #2b6cb0; font-weight: 500; }
         
-        /* 页脚（最后更新） */
         .footer {
             text-align: right;
             color: #718096;
@@ -149,10 +147,8 @@
             border-top: 1px solid #e2e8f0;
         }
         
-        /* 英文内容默认隐藏 */
         .en { display: none; }
 
-        /* 手机端适配 */
         @media (max-width: 768px) {
             .top-nav {
                 flex-direction: column;
@@ -160,14 +156,14 @@
                 align-items: flex-start;
                 padding: 16px;
             }
-            .nav-links { flex-wrap: wrap; gap: 16px; }
+            .nav-links { gap: 16px; }
             .main-content { padding: 0 16px; margin: 24px auto; }
             .card { padding: 22px; }
+            .experience-position { float: none; display: block; margin-top: 4px; }
         }
     </style>
 </head>
 <body>
-    <!-- 顶部悬浮导航 -->
     <nav class="top-nav">
         <div class="nav-title-group">
             <span class="nav-title zh">官凡斐</span>
@@ -176,14 +172,12 @@
             <span class="nav-subtitle en">East China University of Political Science and Law | Accounting (Judicial Accounting)</span>
         </div>
         <div class="nav-links">
-            <a href=" " class="nav-link zh">基本信息</a >
-            <a href="#basic" class="nav-link en">Basic Info</a >
-            <a href="#about" class="nav-link zh">个人简介</a >
-            <a href="#about" class="nav-link en">About Me</a >
-            <a href="#skills" class="nav-link zh">核心技能</a >
-            <a href="#skills" class="nav-link en">Skills</a >
-            <a href="#education" class="nav-link zh">教育经历</a >
-            <a href="#education" class="nav-link en">Education</a >
+            <a href=" " class="nav-link zh">基本信息</a ><a href="#basic" class="nav-link en">Basic Info</a >
+            <a href="#about" class="nav-link zh">个人简介</a ><a href="#about" class="nav-link en">About Me</a >
+            <a href="#skills" class="nav-link zh">核心技能</a ><a href="#skills" class="nav-link en">Skills</a >
+            <a href="#education" class="nav-link zh">教育经历</a ><a href="#education" class="nav-link en">Education</a >
+            <a href="#practice" class="nav-link zh">实践经历</a ><a href="#practice" class="nav-link en">Practice</a >
+            <a href="#campus" class="nav-link zh">校园经历</a ><a href="#campus" class="nav-link en">Campus</a >
         </div>
         <div class="lang-switch">
             <button class="lang-btn active" onclick="switchLang('zh')">中文</button>
@@ -191,34 +185,38 @@
         </div>
     </nav>
 
-    <!-- 主内容区 -->
     <main class="main-content">
-        <!-- 基本信息卡片 -->
         <section id="basic" class="card">
             <h2 class="card-title zh">基本信息</h2>
             <h2 class="card-title en">Basic Information</h2>
             <div class="info-line zh"><strong>姓名：</strong>官凡斐</div>
             <div class="info-line en"><strong>Name：</strong>Fanfei Guan</div>
+            <div class="info-line zh"><strong>出生年月：</strong>2005年05月</div>
+            <div class="info-line en"><strong>Birth Date：</strong>May 2005</div>
+            <div class="info-line zh"><strong>籍贯：</strong>云南省</div>
+            <div class="info-line en"><strong>Native Place：</strong>Yunnan Province</div>
             <div class="info-line zh"><strong>学校/专业：</strong>华东政法大学 | 会计学（司法会计方向）</div>
             <div class="info-line en"><strong>School/Major：</strong>East China University of Political Science and Law | Accounting (Judicial Accounting)</div>
             <div class="info-line zh"><strong>职业方向：</strong>司法会计、财税审计、法务合规</div>
             <div class="info-line en"><strong>Career Focus：</strong>Judicial Accounting, Fiscal & Tax Audit, Legal Compliance</div>
             <div class="info-line"><strong>邮箱：</strong><a href="mailto:2184177965@qq.com" style="color: #3182ce; text-decoration: none;">2184177965@qq.com</a ></div>
+            <div class="info-line zh"><strong>手机号：</strong>13769422650</div>
+            <div class="info-line en"><strong>Phone：</strong>13769422650</div>
+            <div class="info-line zh"><strong>微信号：</strong>G05F24F</div>
+            <div class="info-line en"><strong>WeChat：</strong>G05F24F</div>
         </section>
 
-        <!-- 个人简介卡片 -->
         <section id="about" class="card">
             <h2 class="card-title zh">个人简介</h2>
             <h2 class="card-title en">About Me</h2>
-            <p class="zh">华东政法大学会计学（司法会计方向）本科生，系统掌握会计学与法学交叉核心知识，具备扎实的证据梳理、逻辑分析与公文写作能力。拥有税务局现场辅导、社会调查等实践经历，熟练运用Excel、数据分析工具及办公软件，兼具学生工作的组织协调能力与专业领域的实践热情，致力于在司法会计与财税审计领域深耕发展。</p >
-            <p class="en">Undergraduate student majoring in Judicial Accounting at East China University of Political Science and Law, with a systematic grasp of core interdisciplinary knowledge in accounting and law. Equipped with solid abilities in evidence sorting, logical analysis and official document writing. Having practical experience in tax bureau on-site counseling and social research, proficient in Excel, data analysis tools and office software. Possessing strong organizational coordination skills from student work and passion for professional practice, I am committed to developing in the field of judicial accounting and fiscal audit.</p >
+            <p class="zh">我是司法会计专业本科生，系统掌握会计学与法学核心知识。具备良好的证据梳理与逻辑分析能力，沟通协作意识和学习能力突出，熟练使用Excel等办公软件。对司法会计领域充满热情，致力于将专业所学应用于实践，为未来职业发展奠定坚实基础。</p >
+            <p class="en">I am an undergraduate student majoring in Judicial Accounting, with a solid foundation in accounting and law. I possess strong abilities in evidence sorting, logical analysis, communication and learning, and am proficient in office software such as Excel. Passionate about the field of judicial accounting, I am committed to applying my professional knowledge to practice and laying a solid foundation for my future career development.</p >
         </section>
 
-        <!-- 核心技能卡片 -->
         <section id="skills" class="card">
             <h2 class="card-title zh">核心技能</h2>
             <h2 class="card-title en">Core Skills</h2>
-            <div>
+            <div class="zh">
                 <span class="skill-tag">会计学</span>
                 <span class="skill-tag">法学</span>
                 <span class="skill-tag">税法实务</span>
@@ -227,43 +225,179 @@
                 <span class="skill-tag">宣传排版</span>
                 <span class="skill-tag">统计分析</span>
                 <span class="skill-tag">组织协调</span>
+                <span class="skill-tag">视频制作</span>
+                <span class="skill-tag">政务服务</span>
+            </div>
+            <div class="en">
+                <span class="skill-tag">Accounting</span>
+                <span class="skill-tag">Law</span>
+                <span class="skill-tag">Tax Practice</span>
+                <span class="skill-tag">Excel Data Analysis</span>
+                <span class="skill-tag">Official Document Writing</span>
+                <span class="skill-tag">Publicity & Typesetting</span>
+                <span class="skill-tag">Statistical Analysis</span>
+                <span class="skill-tag">Organization & Coordination</span>
+                <span class="skill-tag">Video Production</span>
+                <span class="skill-tag">Government Affairs Service</span>
             </div>
         </section>
 
-        <!-- 教育经历卡片 -->
         <section id="education" class="card">
             <h2 class="card-title zh">教育经历 & 核心课程</h2>
             <h2 class="card-title en">Education & Core Courses</h2>
             <div class="info-line zh"><strong>2024.09 - 2028.06</strong> 华东政法大学 | 会计学（司法会计方向） 本科</div>
             <div class="info-line en"><strong>2024.09 - 2028.06</strong> East China University of Political Science and Law | Bachelor of Accounting (Judicial Accounting)</div>
             
-            <h3 class="zh" style="margin: 18px 0 10px 0; font-size: 1.15rem; color: #2d3748; font-weight: 600;">主修核心课程</h3>
-            <h3 class="en" style="margin: 18px 0 10px 0; font-size: 1.15rem; color: #2d3748; font-weight: 600;">Core Major Courses</h3>
+            <h3 class="zh" style="margin: 18px 0 10px 0; font-size: 1.15rem; color: #2d3748; font-weight: 600;">主修课程</h3>
+            <h3 class="en" style="margin: 18px 0 10px 0; font-size: 1.15rem; color: #2d3748; font-weight: 600;">Major Courses</h3>
             <ul class="course-list zh">
-                <li>基础会计、中级财务会计、税法、概率论与数理统计、线性代数、管理学</li>
+                <li>基础会计、中级财务会计、税法、概率论与数理统计、线性代数、管理学等</li>
             </ul>
             <ul class="course-list en">
-                <li>Basic Accounting, Intermediate Financial Accounting, Tax Law, Probability and Mathematical Statistics, Linear Algebra, Management</li>
+                <li>Basic Accounting, Intermediate Financial Accounting, Tax Law, Probability & Mathematical Statistics, Linear Algebra, Management, etc.</li>
             </ul>
 
             <h3 class="zh" style="margin: 14px 0 10px 0; font-size: 1.15rem; color: #2d3748; font-weight: 600;">辅修法学课程</h3>
             <h3 class="en" style="margin: 14px 0 10px 0; font-size: 1.15rem; color: #2d3748; font-weight: 600;">Minor Law Courses</h3>
             <ul class="course-list zh">
-                <li>经济法学、法理学、中国法制史、宪法学、刑法学、民法学、知识产权法学</li>
+                <li>经济法学、法理学、中国法制史、宪法学、刑法学、民法学、知识产权法学等</li>
             </ul>
             <ul class="course-list en">
-                <li>Economic Law, Jurisprudence, History of Chinese Legal System, Constitutional Law, Criminal Law, Civil Law, Intellectual Property Law</li>
+                <li>Economic Law, Jurisprudence, History of Chinese Legal System, Constitutional Law, Criminal Law, Civil Law, Intellectual Property Law, etc.</li>
             </ul>
         </section>
 
-        <!-- 最后更新日期 -->
+        <section id="practice" class="card">
+            <h2 class="card-title zh">实践经历</h2>
+            <h2 class="card-title en">Practical Experience</h2>
+            
+            <div class="experience-item">
+                <div class="info-line">
+                    <span class="experience-period zh">2026.01-2026.02</span>
+                    <span class="experience-period en">Jan 2026 - Feb 2026</span>
+                    <span class="experience-place zh">国家税务总局蒙自市税务局</span>
+                    <span class="experience-place en">Mengzi Tax Bureau, State Taxation Administration</span>
+                    <span class="experience-position zh">现场辅导岗</span>
+                    <span class="experience-position en">On-site Counselor</span>
+                </div>
+                <ul class="experience-list zh">
+                    <li>负责办税服务厅的现场引导与辅导，为纳税人提供政策咨询和业务协助</li>
+                    <li>承担柜台办税材料的分类与归档整理，确保涉税资料规范可查</li>
+                </ul>
+                <ul class="experience-list en">
+                    <li>Responsible for on-site guidance and counseling at the tax service hall, providing policy consultation and business assistance to taxpayers</li>
+                    <li>Undertaking the classification and filing of tax materials at the counter, ensuring the standardization and traceability of tax-related documents</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="info-line">
+                    <span class="experience-period zh">2025.07-2025.08</span>
+                    <span class="experience-period en">Jul 2025 - Aug 2025</span>
+                    <span class="experience-place zh">云南省临沧市耿马县</span>
+                    <span class="experience-place en">Gengma County, Lincang City, Yunnan Province</span>
+                    <span class="experience-position zh">社会调查</span>
+                    <span class="experience-position en">Social Survey</span>
+                </div>
+                <ul class="experience-list zh">
+                    <li>实地调研耿马县高山红茶发展现状，制作宣传视频，为茶产业发展建言献策</li>
+                    <li>实践项目获院级成功立项</li>
+                </ul>
+                <ul class="experience-list en">
+                    <li>Conducted field research on the development status of alpine black tea in Gengma County, produced promotional videos, and provided suggestions for the development of the tea industry</li>
+                    <li>The practice project was successfully approved at the college level</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="info-line">
+                    <span class="experience-period zh">2025.01-2025.02</span>
+                    <span class="experience-period en">Jan 2025 - Feb 2025</span>
+                    <span class="experience-place zh">大屯街道办事处</span>
+                    <span class="experience-place en">Datun Sub-district Office</span>
+                    <span class="experience-position zh">文职</span>
+                    <span class="experience-position en">Administrative Staff</span>
+                </div>
+                <ul class="experience-list zh">
+                    <li>协助撰写街道优化项目材料，参与街道权属房屋统计整理，负责会议记录</li>
+                    <li>参与组织承办的街道春节联欢晚会后勤保障工作</li>
+                </ul>
+                <ul class="experience-list en">
+                    <li>Assisted in writing street optimization project materials, participated in the statistics and sorting of street property rights houses, and was responsible for meeting minutes</li>
+                    <li>Participated in the logistical support of the Spring Festival Gala organized by the sub-district</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="campus" class="card">
+            <h2 class="card-title zh">校园经历 & 获奖情况</h2>
+            <h2 class="card-title en">Campus Experience & Awards</h2>
+            
+            <div class="info-line zh" style="margin-bottom: 16px;"><strong>获奖情况：</strong>1983致远奖学金、综合奖学金三等奖、国家励志奖学金、校级优秀团员、职业生涯规划大赛院级一等奖、校级优胜奖</div>
+            <div class="info-line en" style="margin-bottom: 16px;"><strong>Awards：</strong>1983 Zhiyuan Scholarship, Third-class Comprehensive Scholarship, National Encouragement Scholarship, Outstanding League Member, First Prize in College Career Planning Competition, Excellent Award in University Career Planning Competition</div>
+            
+            <div class="experience-item">
+                <div class="info-line">
+                    <span class="experience-period zh">2025.09至今</span>
+                    <span class="experience-period en">Since Sep 2025</span>
+                    <span class="experience-place zh">24007班</span>
+                    <span class="experience-place en">Class 24007</span>
+                    <span class="experience-position zh">班长</span>
+                    <span class="experience-position en">Class Monitor</span>
+                </div>
+                <ul class="experience-list zh">
+                    <li>组织开展班会，收发班级资料，统计学生信息，高效完成班级日常管理与服务工作</li>
+                </ul>
+                <ul class="experience-list en">
+                    <li>Organized class meetings, collected and distributed class materials, counted student information, and efficiently completed daily class management and service work</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="info-line">
+                    <span class="experience-period zh">2025.03至今</span>
+                    <span class="experience-period en">Since Mar 2025</span>
+                    <span class="experience-place zh">校心协</span>
+                    <span class="experience-place en">University Psychological Association</span>
+                    <span class="experience-position zh">宣传部副部长</span>
+                    <span class="experience-position en">Vice Minister of Propaganda Department</span>
+                </div>
+                <ul class="experience-list zh">
+                    <li>负责推文排版、海报设计及公众号运营等宣传工作</li>
+                    <li>深度参与心理集市等活动的沟通与策划，保障活动顺利开展</li>
+                </ul>
+                <ul class="experience-list en">
+                    <li>Responsible for publicity work such as article typesetting, poster design and official account operation</li>
+                    <li>Deeply participated in the communication and planning of activities such as the psychological market, ensuring the smooth development of activities</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="info-line">
+                    <span class="experience-period zh">2024.10至今</span>
+                    <span class="experience-period en">Since Oct 2024</span>
+                    <span class="experience-place zh">商学院</span>
+                    <span class="experience-place en">Business School</span>
+                    <span class="experience-position zh">辅导员助理</span>
+                    <span class="experience-position en">Assistant to Counselor</span>
+                </div>
+                <ul class="experience-list zh">
+                    <li>协助辅导员撰写并推行班级评奖评优加票规则，协调各班级间的工作</li>
+                    <li>组织召开会议并合理分配各项任务，沟通协调各班级合作关系，统筹联合活动及会议的组织推进</li>
+                </ul>
+                <ul class="experience-list en">
+                    <li>Assisted the counselor in writing and implementing the class evaluation and bonus rules, and coordinated work between classes</li>
+                    <li>Organized meetings and rationally assigned tasks, coordinated cooperative relations between classes, and oversaw the organization and promotion of joint activities and meetings</li>
+                </ul>
+            </div>
+        </section>
+
         <footer class="footer">
             <span class="zh">最后更新：2026年03月10日</span>
             <span class="en">Last Updated: March 10, 2026</span>
         </footer>
     </main>
 
-    <!-- 中英切换脚本 -->
     <script>
         let currentLang = 'zh';
         function switchLang(targetLang) {
@@ -285,3 +419,4 @@
         }
     </script>
 </body>
+</html>
