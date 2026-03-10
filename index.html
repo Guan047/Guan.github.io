@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>官凡斐 | 个人主页</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft Yahei", sans-serif; }
+        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid #003366; }
+        h1 { font-size: 2em; color: #003366; }
+        .lang-btn { padding: 8px 16px; background: #003366; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        section { margin-bottom: 25px; }
+        h2 { font-size: 1.4em; color: #003366; margin-bottom: 10px; border-left: 4px solid #003366; padding-left: 10px; }
+        .info-item { margin: 8px 0; }
+        .skill-tag { display: inline-block; background: #e8f4fc; color: #0066cc; padding: 4px 10px; border-radius: 16px; margin: 4px 6px 4px 0; font-size: 0.9em; }
+        footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.9em; color: #666; }
+        .en { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="zh">官凡斐 | 个人主页</h1>
+            <h1 class="en">Fanfei Guan | Personal Homepage</h1>
+            <button class="lang-btn" onclick="toggleLang()">中文 / English</button>
+        </header>
+
+        <section>
+            <h2 class="zh">基本信息</h2>
+            <h2 class="en">Basic Information</h2>
+            <div class="info-item zh"><strong>姓名：</strong>官凡斐</div>
+            <div class="info-item en"><strong>Name：</strong>Fanfei Guan</div>
+            <div class="info-item zh"><strong>学校/专业：</strong>华东政法大学 | 会计学（司法会计方向）</div>
+            <div class="info-item en"><strong>School/Major：</strong>East China University of Political Science and Law | Accounting (Judicial Accounting)</div>
+            <div class="info-item zh"><strong>职业方向：</strong>司法会计、财税审计</div>
+            <div class="info-item en"><strong>Career Interest：</strong>Judicial Accounting, Fiscal & Tax Audit</div>
+            <div class="info-item"><strong>邮箱：</strong><a href=" ">2184177965@qq.com</a ></div>
+        </section>
+
+        <section>
+            <h2 class="zh">个人简介</h2>
+            <h2 class="en">About Me</h2>
+            <p class="zh">我是司法会计专业本科生，系统掌握会计学与法学核心知识，具备良好的证据梳理与逻辑分析能力，沟通协作意识和学习能力突出，熟练使用Excel等办公软件，致力于将专业所学应用于实践。</p >
+            <p class="en">I am an undergraduate student majoring in Judicial Accounting, with a solid foundation in accounting and law. I possess strong evidence sorting, logical analysis, communication and learning abilities, and am proficient in office software such as Excel. I am committed to applying my professional knowledge to practice.</p >
+        </section>
+
+        <section>
+            <h2 class="zh">技能</h2>
+            <h2 class="en">Skills</h2>
+            <div>
+                <span class="skill-tag">会计学</span>
+                <span class="skill-tag">法学</span>
+                <span class="skill-tag">Excel</span>
+                <span class="skill-tag">数据分析</span>
+                <span class="skill-tag">公文写作</span>
+                <span class="skill-tag">宣传排版</span>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="zh">教育经历</h2>
+            <h2 class="en">Education</h2>
+            <div class="info-item zh"><strong>2024.09-2028.06</strong> | 华东政法大学 | 会计学（司法会计方向）</div>
+            <div class="info-item en"><strong>2024.09-2028.06</strong> | East China University of Political Science and Law | Accounting (Judicial Accounting)</div>
+        </section>
+
+        <section>
+            <h2 class="zh">实践经历</h2>
+            <h2 class="en">Practical Experience</h2>
+            <div class="info-item zh"><strong>2026.01-2026.02</strong> | 国家税务总局蒙自市税务局 | 现场辅导岗</div>
+            <div class="info-item en"><strong>2026.01-2026.02</strong> | Mongzi Tax Bureau, State Taxation Administration | On-site Counselor</div>
+            <div class="info-item zh"><strong>2025.07-2025.08</strong> | 云南省临沧市耿马县 | 社会调查</div>
+            <div class="info-item en"><strong>2025.07-2025.08</strong> | Gengma County, Lincang City, Yunnan Province | Social Survey</div>
+            <div class="info-item zh"><strong>2025.01-2025.02</strong> | 大屯街道办事处 | 文职</div>
+            <div class="info-item en"><strong>2025.01-2025.02</strong> | Datun Sub-district Office | Administrative Staff</div>
+        </section>
+
+        <section>
+            <h2 class="zh">校园经历</h2>
+            <h2 class="en">Campus Experience</h2>
+            <div class="info-item zh"><strong>2025.09至今</strong> | 24007班 | 班长</div>
+            <div class="info-item en"><strong>Since Sep. 2025</strong> | Class 24007 | Class Monitor</div>
+            <div class="info-item zh"><strong>2025.03至今</strong> | 校心协 | 宣传部副部长</div>
+            <div class="info-item en"><strong>Since Mar. 2025</strong> | University Psychological Association | Vice Minister of Propaganda Department</div>
+            <div class="info-item zh"><strong>2024.10至今</strong> | 商学院 | 辅导员助理</div>
+            <div class="info-item en"><strong>Since Oct. 2024</strong> | Business School | Assistant to Counselor</div>
+        </section>
+
+        <section>
+            <h2 class="zh">获奖情况</h2>
+            <h2 class="en">Awards</h2>
+            <div class="info-item zh">1983致远奖学金、综合奖学金三等奖、国家励志奖学金、校级优秀团员、职业生涯规划大赛院级一等奖/校级优胜奖</div>
+            <div class="info-item en">1983 Zhiyuan Scholarship, Third-class Comprehensive Scholarship, National Encouragement Scholarship, Outstanding League Member, First Prize in College Career Planning Competition / Excellent Award in University Career Planning Competition</div>
+        </section>
+
+        <footer>
+            <p class="zh">最后更新：2026年03月10日</p >
+            <p class="en">Last Updated: March 10, 2026</p >
+        </footer>
+    </div>
+
+    <script>
+        function toggleLang() {
+            const zhElements = document.querySelectorAll('.zh');
+            const enElements = document.querySelectorAll('.en');
+            zhElements.forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+            enElements.forEach(el => el.style.display = el.style.display === 'block' ? 'none' : 'block');
+        }
+    </script>
+</body>
+</html>
