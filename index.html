@@ -3,111 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>官凡斐 | 个人主页</title>
+    <title>官凡斐 | Personal Homepage</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft Yahei", sans-serif; }
-        body { background: #f5f7fa; color: #333; line-height: 1.6; }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid #003366; }
-        h1 { font-size: 2em; color: #003366; }
-        .lang-btn { padding: 8px 16px; background: #003366; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        section { margin-bottom: 25px; }
-        h2 { font-size: 1.4em; color: #003366; margin-bottom: 10px; border-left: 4px solid #003366; padding-left: 10px; }
-        .info-item { margin: 8px 0; }
-        .skill-tag { display: inline-block; background: #e8f4fc; color: #0066cc; padding: 4px 10px; border-radius: 16px; margin: 4px 6px 4px 0; font-size: 0.9em; }
-        footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.9em; color: #666; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: url('https://picsum.photos/id/1067/1920/1080') no-repeat center center fixed;
+            background-size: cover;
+            color: #2d3748;
+            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        /* 半透明遮罩，让文字更清晰 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.88);
+            z-index: -1;
+        }
+        
+        /* 顶部悬浮导航 */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 16px 24px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0 0 16px 16px;
+        }
+        .nav-title-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .nav-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a365d;
+            letter-spacing: 0.5px;
+        }
+        .nav-subtitle {
+            font-size: 0.95rem;
+            color: #4a5568;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-link {
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover { color: #3182ce; }
+
+        /* 语言切换按钮 */
+        .lang-switch { display: flex; gap: 10px; }
+        .lang-btn {
+            padding: 7px 14px;
+            border: 1px solid #3182ce;
+            border-radius: 20px;
+            background: white;
+            color: #3182ce;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .lang-btn.active {
+            background: #3182ce;
+            color: white;
+        }
+        .lang-btn:hover {
+            background: #3182ce;
+            color: white;
+        }
+        
+        /* 主内容区 */
+        .main-content {
+            max-width: 920px;
+            margin: 35px auto;
+            padding: 0 24px;
+        }
+        
+        /* 圆角卡片样式 */
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .info-line {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+        .info-line strong { color: #2d3748; font-weight: 600; }
+        .skill-tag {
+            display: inline-block;
+            background: #ebf8ff;
+            color: #2b6cb0;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin: 6px 8px 6px 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .course-list {
+            margin-left: 22px;
+            margin-top: 12px;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+        .course-list li { margin-bottom: 8px; }
+        
+        /* 页脚（最后更新） */
+        .footer {
+            text-align: right;
+            color: #718096;
+            font-size: 0.95rem;
+            margin-top: 40px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        /* 英文内容默认隐藏 */
         .en { display: none; }
+
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 14px;
+                align-items: flex-start;
+                padding: 16px;
+            }
+            .nav-links { flex-wrap: wrap; gap: 16px; }
+            .main-content { padding: 0 16px; margin: 24px auto; }
+            .card { padding: 22px; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="zh">官凡斐 | 个人主页</h1>
-            <h1 class="en">Fanfei Guan | Personal Homepage</h1>
-            <button class="lang-btn" onclick="toggleLang()">中文 / English</button>
-        </header>
+    <!-- 顶部悬浮导航 -->
+    <nav class="top-nav">
+        <div class="nav-title-group">
+            <span class="nav-title zh">官凡斐</span>
+            <span class="nav-title en">Fanfei Guan</span>
+            <span class="nav-subtitle zh">华东政法大学 | 会计学（司法会计方向）</span>
+            <span class="nav-subtitle en">East China University of Political Science and Law | Accounting (Judicial Accounting)</span>
+        </div>
+        <div class="nav-links">
+            <a href=" " class="nav-link zh">基本信息</a >
+            <a href="#basic" class="nav-link en">Basic Info</a >
+            <a href="#about" class="nav-link zh">个人简介</a >
+            <a href="#about" class="nav-link en">About Me</a >
+            <a href="#skills" class="nav-link zh">核心技能</a >
+            <a href="#skills" class="nav-link en">Skills</a >
+            <a href="#education" class="nav-link zh">教育经历</a >
+            <a href="#education" class="nav-link en">Education</a >
+        </div>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="switchLang('zh')">中文</button>
+            <button class="lang-btn" onclick="switchLang('en')">English</button>
+        </div>
+    </nav>
 
-        <section>
-            <h2 class="zh">基本信息</h2>
-            <h2 class="en">Basic Information</h2>
-            <div class="info-item zh"><strong>姓名：</strong>官凡斐</div>
-            <div class="info-item en"><strong>Name：</strong>Fanfei Guan</div>
-            <div class="info-item zh"><strong>学校/专业：</strong>华东政法大学 | 会计学（司法会计方向）</div>
-            <div class="info-item en"><strong>School/Major：</strong>East China University of Political Science and Law | Accounting (Judicial Accounting)</div>
-            <div class="info-item zh"><strong>职业方向：</strong>司法会计、财税审计</div>
-            <div class="info-item en"><strong>Career Interest：</strong>Judicial Accounting, Fiscal & Tax Audit</div>
-            <div class="info-item"><strong>邮箱：</strong><a href=" ">2184177965@qq.com</a ></div>
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 基本信息卡片 -->
+        <section id="basic" class="card">
+            <h2 class="card-title zh">基本信息</h2>
+            <h2 class="card-title en">Basic Information</h2>
+            <div class="info-line zh"><strong>姓名：</strong>官凡斐</div>
+            <div class="info-line en"><strong>Name：</strong>Fanfei Guan</div>
+            <div class="info-line zh"><strong>学校/专业：</strong>华东政法大学 | 会计学（司法会计方向）</div>
+            <div class="info-line en"><strong>School/Major：</strong>East China University of Political Science and Law | Accounting (Judicial Accounting)</div>
+            <div class="info-line zh"><strong>职业方向：</strong>司法会计、财税审计、法务合规</div>
+            <div class="info-line en"><strong>Career Focus：</strong>Judicial Accounting, Fiscal & Tax Audit, Legal Compliance</div>
+            <div class="info-line"><strong>邮箱：</strong><a href="mailto:2184177965@qq.com" style="color: #3182ce; text-decoration: none;">2184177965@qq.com</a ></div>
         </section>
 
-        <section>
-            <h2 class="zh">个人简介</h2>
-            <h2 class="en">About Me</h2>
-            <p class="zh">我是司法会计专业本科生，系统掌握会计学与法学核心知识，具备良好的证据梳理与逻辑分析能力，沟通协作意识和学习能力突出，熟练使用Excel等办公软件，致力于将专业所学应用于实践。</p >
-            <p class="en">I am an undergraduate student majoring in Judicial Accounting, with a solid foundation in accounting and law. I possess strong evidence sorting, logical analysis, communication and learning abilities, and am proficient in office software such as Excel. I am committed to applying my professional knowledge to practice.</p >
+        <!-- 个人简介卡片 -->
+        <section id="about" class="card">
+            <h2 class="card-title zh">个人简介</h2>
+            <h2 class="card-title en">About Me</h2>
+            <p class="zh">华东政法大学会计学（司法会计方向）本科生，系统掌握会计学与法学交叉核心知识，具备扎实的证据梳理、逻辑分析与公文写作能力。拥有税务局现场辅导、社会调查等实践经历，熟练运用Excel、数据分析工具及办公软件，兼具学生工作的组织协调能力与专业领域的实践热情，致力于在司法会计与财税审计领域深耕发展。</p >
+            <p class="en">Undergraduate student majoring in Judicial Accounting at East China University of Political Science and Law, with a systematic grasp of core interdisciplinary knowledge in accounting and law. Equipped with solid abilities in evidence sorting, logical analysis and official document writing. Having practical experience in tax bureau on-site counseling and social research, proficient in Excel, data analysis tools and office software. Possessing strong organizational coordination skills from student work and passion for professional practice, I am committed to developing in the field of judicial accounting and fiscal audit.</p >
         </section>
 
-        <section>
-            <h2 class="zh">技能</h2>
-            <h2 class="en">Skills</h2>
+        <!-- 核心技能卡片 -->
+        <section id="skills" class="card">
+            <h2 class="card-title zh">核心技能</h2>
+            <h2 class="card-title en">Core Skills</h2>
             <div>
                 <span class="skill-tag">会计学</span>
                 <span class="skill-tag">法学</span>
-                <span class="skill-tag">Excel</span>
-                <span class="skill-tag">数据分析</span>
+                <span class="skill-tag">税法实务</span>
+                <span class="skill-tag">Excel数据分析</span>
                 <span class="skill-tag">公文写作</span>
                 <span class="skill-tag">宣传排版</span>
+                <span class="skill-tag">统计分析</span>
+                <span class="skill-tag">组织协调</span>
             </div>
         </section>
 
-        <section>
-            <h2 class="zh">教育经历</h2>
-            <h2 class="en">Education</h2>
-            <div class="info-item zh"><strong>2024.09-2028.06</strong> | 华东政法大学 | 会计学（司法会计方向）</div>
-            <div class="info-item en"><strong>2024.09-2028.06</strong> | East China University of Political Science and Law | Accounting (Judicial Accounting)</div>
+        <!-- 教育经历卡片 -->
+        <section id="education" class="card">
+            <h2 class="card-title zh">教育经历 & 核心课程</h2>
+            <h2 class="card-title en">Education & Core Courses</h2>
+            <div class="info-line zh"><strong>2024.09 - 2028.06</strong> 华东政法大学 | 会计学（司法会计方向） 本科</div>
+            <div class="info-line en"><strong>2024.09 - 2028.06</strong> East China University of Political Science and Law | Bachelor of Accounting (Judicial Accounting)</div>
+            
+            <h3 class="zh" style="margin: 18px 0 10px 0; font-size: 1.15rem; color: #2d3748; font-weight: 600;">主修核心课程</h3>
+            <h3 class="en" style="margin: 18px 0 10px 0; font-size: 1.15rem; color: #2d3748; font-weight: 600;">Core Major Courses</h3>
+            <ul class="course-list zh">
+                <li>基础会计、中级财务会计、税法、概率论与数理统计、线性代数、管理学</li>
+            </ul>
+            <ul class="course-list en">
+                <li>Basic Accounting, Intermediate Financial Accounting, Tax Law, Probability and Mathematical Statistics, Linear Algebra, Management</li>
+            </ul>
+
+            <h3 class="zh" style="margin: 14px 0 10px 0; font-size: 1.15rem; color: #2d3748; font-weight: 600;">辅修法学课程</h3>
+            <h3 class="en" style="margin: 14px 0 10px 0; font-size: 1.15rem; color: #2d3748; font-weight: 600;">Minor Law Courses</h3>
+            <ul class="course-list zh">
+                <li>经济法学、法理学、中国法制史、宪法学、刑法学、民法学、知识产权法学</li>
+            </ul>
+            <ul class="course-list en">
+                <li>Economic Law, Jurisprudence, History of Chinese Legal System, Constitutional Law, Criminal Law, Civil Law, Intellectual Property Law</li>
+            </ul>
         </section>
 
-        <section>
-            <h2 class="zh">实践经历</h2>
-            <h2 class="en">Practical Experience</h2>
-            <div class="info-item zh"><strong>2026.01-2026.02</strong> | 国家税务总局蒙自市税务局 | 现场辅导岗</div>
-            <div class="info-item en"><strong>2026.01-2026.02</strong> | Mongzi Tax Bureau, State Taxation Administration | On-site Counselor</div>
-            <div class="info-item zh"><strong>2025.07-2025.08</strong> | 云南省临沧市耿马县 | 社会调查</div>
-            <div class="info-item en"><strong>2025.07-2025.08</strong> | Gengma County, Lincang City, Yunnan Province | Social Survey</div>
-            <div class="info-item zh"><strong>2025.01-2025.02</strong> | 大屯街道办事处 | 文职</div>
-            <div class="info-item en"><strong>2025.01-2025.02</strong> | Datun Sub-district Office | Administrative Staff</div>
-        </section>
-
-        <section>
-            <h2 class="zh">校园经历</h2>
-            <h2 class="en">Campus Experience</h2>
-            <div class="info-item zh"><strong>2025.09至今</strong> | 24007班 | 班长</div>
-            <div class="info-item en"><strong>Since Sep. 2025</strong> | Class 24007 | Class Monitor</div>
-            <div class="info-item zh"><strong>2025.03至今</strong> | 校心协 | 宣传部副部长</div>
-            <div class="info-item en"><strong>Since Mar. 2025</strong> | University Psychological Association | Vice Minister of Propaganda Department</div>
-            <div class="info-item zh"><strong>2024.10至今</strong> | 商学院 | 辅导员助理</div>
-            <div class="info-item en"><strong>Since Oct. 2024</strong> | Business School | Assistant to Counselor</div>
-        </section>
-
-        <section>
-            <h2 class="zh">获奖情况</h2>
-            <h2 class="en">Awards</h2>
-            <div class="info-item zh">1983致远奖学金、综合奖学金三等奖、国家励志奖学金、校级优秀团员、职业生涯规划大赛院级一等奖/校级优胜奖</div>
-            <div class="info-item en">1983 Zhiyuan Scholarship, Third-class Comprehensive Scholarship, National Encouragement Scholarship, Outstanding League Member, First Prize in College Career Planning Competition / Excellent Award in University Career Planning Competition</div>
-        </section>
-
-        <footer>
-            <p class="zh">最后更新：2026年03月10日</p >
-            <p class="en">Last Updated: March 10, 2026</p >
+        <!-- 最后更新日期 -->
+        <footer class="footer">
+            <span class="zh">最后更新：2026年03月10日</span>
+            <span class="en">Last Updated: March 10, 2026</span>
         </footer>
-    </div>
+    </main>
 
+    <!-- 中英切换脚本 -->
     <script>
-        function toggleLang() {
+        let currentLang = 'zh';
+        function switchLang(targetLang) {
+            if (targetLang === currentLang) return;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
             const zhElements = document.querySelectorAll('.zh');
             const enElements = document.querySelectorAll('.en');
-            zhElements.forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
-            enElements.forEach(el => el.style.display = el.style.display === 'block' ? 'none' : 'block');
+            if (targetLang === 'en') {
+                zhElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'block');
+                document.documentElement.lang = 'en';
+            } else {
+                enElements.forEach(el => el.style.display = 'none');
+                zhElements.forEach(el => el.style.display = 'block');
+                document.documentElement.lang = 'zh-CN';
+            }
+            currentLang = targetLang;
         }
     </script>
 </body>
-</html>
